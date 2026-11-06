@@ -12,7 +12,7 @@
  *   ui_in[3:0] addr     0..3 weight byte lane, 4 op, 5 status
  *   uio_in     data
  *   uo_out     readback byte for addr
- *   uio_out[3:0] {satur, floored, tick, wrapped}
+ *   uio_out[7:4] {satur, floored, tick, wrapped}
  *   uio_oe     8'hF0
  */
 module tt_um_marzmmp_adama_plasticity (
@@ -85,6 +85,6 @@ module tt_um_marzmmp_adama_plasticity (
     end
 
     assign uo_out  = rd_mux;
-    assign uio_out = {4'b0, satur, floored, tick, wrapped};
+    assign uio_out = {satur, floored, tick, wrapped, 4'b0};
     assign uio_oe  = 8'hF0;
 endmodule
