@@ -40,3 +40,23 @@ The GitHub action will automatically build the ASIC files using [LibreLane](http
   - Mastodon [#tinytapeout](https://chaos.social/tags/tinytapeout) [@matthewvenn](https://chaos.social/@matthewvenn)
   - X (formerly Twitter) [#tinytapeout](https://twitter.com/hashtag/tinytapeout) [@tinytapeout](https://twitter.com/tinytapeout)
   - Bluesky [@tinytapeout.com](https://bsky.app/profile/tinytapeout.com)
+
+## ADAMA-1 Plasticity Core — shuttle record
+
+- **Shuttle:** Tiny Tapeout SKY 26e (lot CI-2612, closes 2026-11-30, chips expected 2027-05-12)
+- **Tiles:** 1x1 (single 167x108 um tile)
+- **PDK:** sky130A
+- **Top module:** `tt_um_marzmmp_adama_plasticity`
+
+What this die is, precisely: the **plasticity engine only** — LTP/LTD synaptic
+update (`nmf_synapse_update`) and the circadian tick (`nmf_tick`) from the
+ADAMA-1 neuromorphic core. It is not the memory fabric; the 144-ring fabric with
+the MRU residency table is ~13.3k gates and needs far more than one tile.
+
+Interface:
+- `ui[3:0]` addr, `ui[6]` write/reset, `ui[7]` write-enable
+- `uio[3:0]` write data (inputs), `uio[7:4]` live status: satur, floored, tick, wrapped
+- `uo[7:0]` addressed readback byte (addr 5 returns the status nibble)
+
+Source of truth is the private repo `marzmmp/adama-1-silicon`; this repository is
+generated from it by `tools/sync_tt.sh`. Do not edit here by hand.
