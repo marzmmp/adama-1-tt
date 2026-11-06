@@ -39,20 +39,20 @@ pinout:
   uo[1]: "rd_data1"
   uo[2]: "rd_data2"
   uo[3]: "rd_data3"
-  uo[4]: "op0"
-  uo[5]: "op1"
-  uo[6]: "satur"
-  uo[7]: "floored"
+  uo[4]: "rd_data4"
+  uo[5]: "rd_data5"
+  uo[6]: "rd_data6"
+  uo[7]: "rd_data7"
 
   # Bidirectional pins
   uio[0]: "wr_data0"
   uio[1]: "wr_data1"
   uio[2]: "wr_data2"
   uio[3]: "wr_data3"
-  uio[4]: "tick"
-  uio[5]: "wrapped"
-  uio[6]: ""
-  uio[7]: ""
+  uio[4]: "wrapped"
+  uio[5]: "tick"
+  uio[6]: "floored"
+  uio[7]: "satur"
 
 # Do not change!
 yaml_version: 6
